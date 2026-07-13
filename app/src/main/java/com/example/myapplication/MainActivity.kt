@@ -134,7 +134,7 @@ fun BusinessCardDarkPreview() {
     name = "Card - Light Big Font",
     showBackground = true,
     widthDp = 360,
-    fontScale = 1.5f
+    fontScale = 1.3f
 )
 @Composable
 fun BusinessCardBigPreview() {
