@@ -35,7 +35,7 @@ class ProfileViewModel : ViewModel() {
     // --- Add / remove skills ---
     fun addSkill() {
         val skill = _uiState.value.newSkill.trim()
-        if (skill.isEmpty()) return          // ignore empty input
+        if (skill.isEmpty() || _uiState.value.skills.contains(skill)) return          // ignore empty input or duplicate skill
         _uiState.update { current ->
             current.copy(
                 skills = current.skills + skill, // new list = old + one
@@ -53,4 +53,9 @@ class ProfileViewModel : ViewModel() {
     // --- Preview toggle ---
     fun showPreview() = _uiState.update { it.copy(isPreview = true) }
     fun backToEdit() = _uiState.update { it.copy(isPreview = false) }
+
+    // --- Reset state ---
+    fun clearAll() {
+        _uiState.value = ProfileUiState()
+    }
 }
