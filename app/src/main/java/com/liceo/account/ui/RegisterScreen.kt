@@ -19,7 +19,6 @@ fun RegisterScreen(
     onCreate: (String, String, String, String) -> Unit,
     onGoToLogin: () -> Unit
 ) {
-    // TODO 11a: four text states
     var fullName by rememberSaveable { mutableStateOf("") }
     var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
@@ -37,7 +36,6 @@ fun RegisterScreen(
     ) {
         Text("Create account", style = MaterialTheme.typography.headlineMedium)
 
-        // TODO 11b: Full name field
         OutlinedTextField(
             value = fullName,
             onValueChange = { fullName = it },
@@ -46,7 +44,6 @@ fun RegisterScreen(
             modifier = Modifier.fillMaxWidth()
         )
 
-        // TODO 11c: Email field (email keyboard)
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
@@ -56,7 +53,6 @@ fun RegisterScreen(
             modifier = Modifier.fillMaxWidth()
         )
 
-        // TODO 11d: Password field (hidden)
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
@@ -67,7 +63,6 @@ fun RegisterScreen(
             modifier = Modifier.fillMaxWidth()
         )
 
-        // TODO 11e: Birthdate field with placeholder
         OutlinedTextField(
             value = birthdate,
             onValueChange = { birthdate = it },
@@ -77,7 +72,6 @@ fun RegisterScreen(
             modifier = Modifier.fillMaxWidth()
         )
 
-        // TODO 11f: red error, green success
         if (state is AuthUiState.Error) {
             Text(state.message, color = MaterialTheme.colorScheme.error)
         }
@@ -88,7 +82,6 @@ fun RegisterScreen(
             )
         }
 
-        // TODO 11g: Create account button with loading spinner
         Button(
             onClick = { onCreate(fullName, email, password, birthdate) },
             enabled = !isLoading,
@@ -101,7 +94,6 @@ fun RegisterScreen(
             }
         }
 
-        // TODO 11h: link back to Login
         TextButton(onClick = onGoToLogin) { Text("Already have an account? Log in") }
     }
 }

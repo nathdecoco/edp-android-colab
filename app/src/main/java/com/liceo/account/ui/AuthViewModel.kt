@@ -31,7 +31,6 @@ class AuthViewModel(
         is AppResult.Failure.Unknown -> "Something went wrong: ${failure.msg}"
     }
 
-    // TODO 8: check the input, then ask the repository
     fun login(email: String, password: String) {
         if (email.isBlank() || password.isBlank()) {
             uiState = AuthUiState.Error("Please enter your email and password.")
@@ -48,7 +47,6 @@ class AuthViewModel(
         }
     }
 
-    // TODO 9: check four fields, then ask the repository
     fun register(fullName: String, email: String, password: String, birthdate: String) {
         if (fullName.isBlank() || email.isBlank() || password.isBlank() || birthdate.isBlank()) {
             uiState = AuthUiState.Error("Please fill in all four fields.")

@@ -21,7 +21,6 @@ fun ProfileScreen(user: User, onLogout: () -> Unit) {
             .padding(24.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        // TODO 12a: green success card
         Card(
             colors = CardDefaults.cardColors(containerColor = Color(0xFFE8F5E9)),
             modifier = Modifier.fillMaxWidth()
@@ -36,19 +35,15 @@ fun ProfileScreen(user: User, onLogout: () -> Unit) {
             }
         }
 
-        // TODO 12b: heading
         Text("My Profile", style = MaterialTheme.typography.headlineSmall)
 
-        // TODO 12c: the four rows
         ProfileRow("Full name", user.fullName)
         ProfileRow("Email", user.email)
         ProfileRow("Birthdate", user.birthdate)
         ProfileRow("User ID", user.id)
 
-        // BONUS TODO 14d: the Age row
         ageFrom(user.birthdate)?.let { ProfileRow("Age", "$it years old") }
 
-        // TODO 12d: Log out button
         Button(onClick = onLogout, modifier = Modifier.fillMaxWidth()) { Text("Log out") }
     }
 }
@@ -62,7 +57,7 @@ fun ProfileRow(label: String, value: String) {
     }
 }
 
-// BONUS TODO 14: returns the age in years, or null if the birthdate cannot be read.
+// Returns the age in years, or null if the birthdate cannot be read.
 fun ageFrom(birthdate: String): Int? {
     val parts = birthdate.split("-")
     if (parts.size != 3) return null

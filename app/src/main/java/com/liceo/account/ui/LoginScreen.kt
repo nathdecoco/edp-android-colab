@@ -22,7 +22,6 @@ fun LoginScreen(
     // GIVEN: what the user types lives here
     var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
-    // BONUS TODO 13a: show / hide the password
     var showPassword by remember { mutableStateOf(false) }
     val isLoading = state is AuthUiState.Loading
 
@@ -38,7 +37,6 @@ fun LoginScreen(
         Text("LiceoAccount", style = MaterialTheme.typography.headlineMedium)
         Text("Log in to your account")
 
-        // TODO 10a: Email field
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
@@ -48,7 +46,6 @@ fun LoginScreen(
             modifier = Modifier.fillMaxWidth()
         )
 
-        // TODO 10b: Password field, hidden (BONUS TODO 13b, 13c: show/hide toggle)
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
@@ -64,12 +61,10 @@ fun LoginScreen(
             modifier = Modifier.fillMaxWidth()
         )
 
-        // TODO 10c: red error message
         if (state is AuthUiState.Error) {
             Text(state.message, color = MaterialTheme.colorScheme.error)
         }
 
-        // TODO 10d: Log in button with loading spinner
         Button(
             onClick = { onLogin(email, password) },
             enabled = !isLoading,
@@ -82,7 +77,6 @@ fun LoginScreen(
             }
         }
 
-        // TODO 10e: link to Create Account
         TextButton(onClick = onGoToRegister) { Text("No account yet? Create one") }
     }
 }
